@@ -10,7 +10,7 @@ import { WeekScheduleService } from './week-schedule.service';
 })
 export class WeekScheduleComponent implements OnInit {
 details = [];
-date
+date = new Date();
   constructor(private service: WeekScheduleService, private datePipe: DatePipe) { }
 
   ngOnInit(): void {
@@ -22,7 +22,6 @@ date
       this.details = (data as any).centers;
       this.details.forEach((x, i) => {
         this.details[i].show = x.sessions.filter(x => x.available_capacity > 0 ).length > 0;
-        this.details[i].show = true;
       });
     });
   }

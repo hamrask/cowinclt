@@ -1,11 +1,17 @@
-<input type="date" [(ngModel)]="date" pattern="dd-MM-yyyy"/>
-<button (click)="getWeekData()">Get Details</button>
+<mat-form-field appearance="fill">
+    <mat-label>Choose Date</mat-label>
+    <input [(ngModel)]="date" matInput [matDatepicker]="dp3">
+    <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+    <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+  </mat-form-field>
+<button mat-stroked-button color="primary" (click)="getWeekData()">Get Details</button>
 <div class="row">
     <div class="col-md-4" *ngFor="let item of details">
         <mat-card [ngClass]="item.show ? 'green': 'red'">
             <mat-card-title>{{item.name}}</mat-card-title>
             <span *ngFor="let obj of item.sessions">
-                {{obj.available_capacity | json}}
+                Min Age Limit: {{obj.min_age_limit | json}}
+                Availability: {{obj.available_capacity | json}}
             </span>
         </mat-card>
     </div>
