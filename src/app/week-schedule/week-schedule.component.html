@@ -7,12 +7,14 @@
 <button mat-stroked-button color="primary" (click)="getWeekData()">Get Details</button>
 <div class="row">
     <div class="col-md-4" *ngFor="let item of details">
-        <mat-card [ngClass]="item.show ? 'green': 'red'">
+        <mat-card>
             <mat-card-title>{{item.name}}</mat-card-title>
-            <span *ngFor="let obj of item.sessions">
-                Min Age Limit: {{obj.min_age_limit | json}}
-                Availability: {{obj.available_capacity | json}}
-            </span>
+            <div *ngFor="let obj of item.sessions;index as i">
+                <strong style="color: black;">Session {{i+1}}</strong>&nbsp;
+                <span>Min Age Limit: {{obj.min_age_limit | json}}</span>&nbsp;
+                <span [ngClass]="obj.available_capacity ? 'green':'red'">Availability: {{obj.available_capacity | json}}</span>
+                <br>
+            </div>
         </mat-card>
     </div>
 </div>
