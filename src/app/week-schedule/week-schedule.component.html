@@ -2,7 +2,7 @@
 <button (click)="getWeekData()">Get Details</button>
 <div class="row">
     <div class="col-md-4" *ngFor="let item of details">
-        <mat-card *ngIf="item.show">
+        <mat-card [ngClass]="item.show ? 'green': 'red'">
             <mat-card-title>{{item.name}}</mat-card-title>
             <span *ngFor="let obj of item.sessions">
                 {{obj.available_capacity | json}}
