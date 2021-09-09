@@ -10,11 +10,13 @@
         <mat-card>
             <mat-card-title>{{item.name}}</mat-card-title>
             <div *ngFor="let obj of item.sessions;index as i">
-                <strong style="color: black;">Session {{i+1}}</strong>&nbsp;
-                <span>Min Age Limit: {{obj.min_age_limit | json}}</span>&nbsp;
-                <span [ngClass]="obj.available_capacity ? 'green':'red'">Availability: {{obj.available_capacity | json}}</span>&nbsp;
-                <span>Vaccine: {{obj.vaccine}}</span> &nbsp;
-                <span>Fee Type: {{item.fee_type}}</span>
+                <ng-container *ngIf="obj.fee_type == 'Free'">
+                    <strong style="color: black;">Session {{i+1}}</strong>&nbsp;
+                    <span>Min Age Limit: {{obj.min_age_limit | json}}</span>&nbsp;
+                    <span [ngClass]="obj.available_capacity ? 'green':'red'">Availability: {{obj.available_capacity | json}}</span>&nbsp;
+                    <span>Vaccine: {{obj.vaccine}}</span> &nbsp;
+                    <span>Fee Type: {{item.fee_type}}</span>
+                </ng-container>
                 <br>
             </div>
         </mat-card>
